@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const { pool } = require('./config')
-
+export NODE_TLS_REJECT_UNAUTHORIZED='0'
 const app = express()
 
 app.use(bodyParser.json())
