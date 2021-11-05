@@ -12,7 +12,7 @@ app.use(cors())
 const getBooks = (request, response) => {
   pool.query('SELECT * FROM books', (error, results) => {
     if (error) {
-      response.status(error.status).send('error')
+      throw error
     }
     response.status(200).json(results.rows)
   })
@@ -25,7 +25,7 @@ const addBook = (request, response) => {
     [author, title],
     (error) => {
       if (error) {
-        response.status(error.status).send('error')
+        throw error
       }
       response.status(201).json({ status: 'success', message: 'Book added.' })
     }
